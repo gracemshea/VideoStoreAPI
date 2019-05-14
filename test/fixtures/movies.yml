@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  overview: MyString
-  release_date: 2019-05-14
-  inventory: 1
+wild:
+  title: "Wild Hearts Can't Be Broken"
+  overview: "A young girl follows her dreams of being a horse diver despite setback"
+  release_date: 1991-05-24
+  inventory: 5
 
-two:
-  title: MyString
-  overview: MyString
-  release_date: 2019-05-14
+oliver:
+  title: "Oliver and Company"
+  overview: "A band of misfit dogs forge a friendship with a kitten"
+  release_date: 1988-11-18
   inventory: 1
