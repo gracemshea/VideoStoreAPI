@@ -1,10 +1,10 @@
 require "test_helper"
 
 describe Customer do
-  let(:customer) { Customer.new }
+  # let(:customer) { Customer.new }
 
-  describe 'validations' do
-    let(:customer) { customers():customer_one) }
+  describe "validations" do
+    let(:customer) { customers(:customer_one) }
 
     it "must be valid" do
       value(customer).must_be :valid?
@@ -41,8 +41,8 @@ describe Customer do
     end
 
     it "must have a registered date" do
-      customer.registered_ate = nil
+      customer.registered_date = nil
       customer.valid?.must_equal false
     end
-
+  end
 end
