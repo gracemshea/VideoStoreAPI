@@ -16,22 +16,22 @@ describe Customer do
     end
 
     it "must have a address" do
-      customer.phone = nil
+      customer.address = nil
       customer.valid?.must_equal false
     end
 
     it "must have a city" do
-      customer.phone = nil
+      customer.city = nil
       customer.valid?.must_equal false
     end
 
     it "must have a state" do
-      customer.phone = nil
+      customer.state = nil
       customer.valid?.must_equal false
     end
 
     it "must have a postal_code" do
-      customer.phone = nil
+      customer.postal_code = nil
       customer.valid?.must_equal false
     end
 
