@@ -44,5 +44,15 @@ describe Customer do
       customer.registered_at = nil
       customer.valid?.must_equal false
     end
+
+    describe "relations" do
+      it "can have many rentals" do
+        customer = customers(:one)
+        customer.must_respond_to :rentals
+        customer.rentals.each do |rental|
+          rental.must_be_kind_of Rental
+        end
+      end
+    end
   end
 end
