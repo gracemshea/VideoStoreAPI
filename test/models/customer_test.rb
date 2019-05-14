@@ -4,7 +4,7 @@ describe Customer do
   # let(:customer) { Customer.new }
 
   describe "validations" do
-    let(:customer) { customers(:customer_one) }
+    let(:customer) { customers(:one) }
 
     it "must be valid" do
       value(customer).must_be :valid?
@@ -41,7 +41,7 @@ describe Customer do
     end
 
     it "must have a registered date" do
-      customer.registered_date = nil
+      customer.registered_at = nil
       customer.valid?.must_equal false
     end
   end
