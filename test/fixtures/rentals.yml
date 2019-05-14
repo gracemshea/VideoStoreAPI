@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  check_in: 2019-05-14
+  check_out: 2019-05-14
+  movie: one
+  customer: one
+
+two:
+  check_in: 2019-05-14
+  check_out: 2019-05-14
+  movie: two
+  customer: two
