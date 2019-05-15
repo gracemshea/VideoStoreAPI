@@ -12,5 +12,10 @@ class Rental < ApplicationRecord
     else
       return false
     end
+
+  private
+
+  def rental_params
+    params.permit(:customer_id, :movie_id)
   end
 end
