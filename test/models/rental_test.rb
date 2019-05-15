@@ -1,10 +1,44 @@
 require "test_helper"
 
 describe Rental do
-  let(:rental) { Rental.new }
+  let(:rental) { rentals(:one) }
 
-  it "must be valid" do
-    value(rental).must_be :valid?
+  describe "validations" do
+    it "must be valid" do
+      value(rental).must_be :valid?
+    end
+
+    it "has required fields" do
+      fields = [:movie_id, :customer_id, :check_out, :check_in, :status]
+
+      fields.each do |field|
+        expect(rental).must_respond_to field
+      end
+    end
+
+    it "must have a check_out date" do
+      rental.check_out = nil
+      valid = rental.save
+
+      expect(valid).must_equal false
+      expect(rental.errors.messages).must_include :check_out
+    end
+
+    it "must have a check_in date" do
+      rental.check_in = nil
+      valid = rental.save
+
+      expect(valid).must_equal false
+      expect(rental.errors.messages).must_include :check_in
+    end
+
+    it "must have a status" do
+      rental.status = nil
+      valid = rental.save
+
+      expect(valid).must_equal false
+      expect(rental.errors.messages).must_include :status
+    end
   end
 
   describe "relations" do
