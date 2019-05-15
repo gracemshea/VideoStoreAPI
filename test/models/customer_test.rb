@@ -1,8 +1,6 @@
 require "test_helper"
 
 describe Customer do
-  # let(:customer) { Customer.new }
-
   describe "validations" do
     let(:customer) { customers(:one) }
 

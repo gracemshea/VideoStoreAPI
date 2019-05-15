@@ -2,21 +2,21 @@
 
 one:
   movie: wild
-  customer: Stugene
+  customer: one
   check_out: 2019-01-05
   check_in: 2019-01-12
   status: "available"
 
 two:
   movie: oliver
-  customer: Stugene
+  customer: one
   check_out: 2019-05-15
   check_in: 2019-05-22
   status: "unavailable"
 
 three:
   movie: will
-  customer: Barnacle
+  customer: two
   check_out: 2019-05-15
   check_in: 2019-05-22
   status: "unavailable"

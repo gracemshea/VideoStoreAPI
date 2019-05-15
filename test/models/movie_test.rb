@@ -57,4 +57,20 @@ describe Movie do
       end
     end
   end
+
+  describe "available_inventory" do
+    it "can calculate available_inventory for movie" do
+      movie = movies(:will)
+      avail_inv = movie.available_inventory
+
+      expect(avail_inv).must_equal 2
+    end
+
+    it "can calculate available_inventory for movie that has not been rented" do
+      movie = movies(:stranger)
+      avail_inv = movie.available_inventory
+
+      expect(avail_inv).must_equal movie.inventory
+    end
+  end
 end

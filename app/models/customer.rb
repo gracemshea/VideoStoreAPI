@@ -5,13 +5,13 @@ class Customer < ApplicationRecord
 
   def movies_checked_out_count
     total = 0
-    num_out = 0
-    num_in = 0
+    num_unavailable = 0
+    num_unavailable = 0
     self.rentals.each do |rental|
       if rental.status == "unavailable"
-        num_out += 1
+        num_unavailable += 1
       end
     end
-    return (movies_count = num_out)
+    return (movies_count = num_unavailable)
   end
 end
