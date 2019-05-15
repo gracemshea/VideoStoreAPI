@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe RentalsController do
-  describe "checkout" do
+  describe "check_out" do
     let(:rental_data) {
       {
         movie_id: movies(:wild).id,
@@ -11,7 +11,7 @@ describe RentalsController do
 
     it "creates a new rental given valid data" do
       expect {
-        post checkout_path, params: rental_data
+        post check_out_path, params: rental_data
       }.must_change "Rental.count", 1
 
       rental = Rental.last
@@ -30,7 +30,7 @@ describe RentalsController do
       rental_data["customer_id"] = -1
 
       expect {
-        post checkout_path, params: rental_data
+        post check_out_path, params: rental_data
       }.wont_change "Rental.count"
 
       must_respond_with :bad_request
@@ -40,19 +40,19 @@ describe RentalsController do
       rental_data["movie_id"] = -1
 
       expect {
-        post checkout_path, params: rental_data
+        post check_out_path, params: rental_data
       }.wont_change "Rental.count"
 
       must_respond_with :bad_request
     end
   end
 
-  describe "checkin" do
+  describe "check_in" do
     it "checks in a valid rental" do
       movie = movies(:will)
       customer = customers(:one)
       expect {
-        post checkin_path, params: { customer_id: customer.id, movie_id: movie.id }
+        post check_in_path, params: { customer_id: customer.id, movie_id: movie.id }
       }.wont_change "Rental.count"
 
       must_respond_with :success
@@ -64,7 +64,7 @@ describe RentalsController do
     it "does not check in a movie if parameters are invalid" do
       movie = movies(:oliver)
       expect {
-        post checkin_path, params: { customer_id: -1, movie_id: movie.id }
+        post check_in_path, params: { customer_id: -1, movie_id: movie.id }
       }.wont_change "Rental.count"
 
       must_respond_with :not_found
@@ -73,7 +73,7 @@ describe RentalsController do
     it "does not check in if parameters are missing" do
       movie = movies(:stranger)
       expect {
-        post checkin_path, params: { movie_id: movie.id }
+        post check_in_path, params: { movie_id: movie.id }
       }.wont_change "Rental.count"
 
       must_respond_with :not_found

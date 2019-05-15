@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  def checkout
+  def check_out
     rental = Rental.new(rental_params)
     rental.check_out = Date.today
     rental.check_in = rental.check_out + 7
@@ -20,7 +20,7 @@ class RentalsController < ApplicationController
     end
   end
 
-  def checkin
+  def check_in
     rental = Rental.find_by(movie_id: rental_params[:movie_id], customer_id: rental_params[:customer_id], status: "unavailable")
     if rental
       rental.status = "available"
