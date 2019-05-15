@@ -24,4 +24,15 @@ describe Rental do
       rental_one.movie.must_equal movies(:one)
     end
   end
+  describe "custom method " do
+    it "checks if no movie is available when all are checked out" do
+      #TO DO: HOW TO SET UP A CHECKED OUT MOVIE
+    end
+
+    it "checks that movie is available when there are more in inventory than are checked out" do
+    end
+
+    it "checks that movie is not available when there are none in inventory" do
+    end
+  end
 end
