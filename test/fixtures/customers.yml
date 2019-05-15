@@ -10,7 +10,7 @@ one:
   phone: MyString
 
 two:
-  name: MyString
+  name: "Barnacle"
   registered_at: 2019-05-14 13:21:58
   address: MyString
   city: MyString
