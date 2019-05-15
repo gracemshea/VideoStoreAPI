@@ -20,7 +20,7 @@ describe CustomersController do
     end
 
     it "returns customers with exactly the required fields" do
-      keys = %w(address city name phone postal_code registered_at state)
+      keys = %w(id name phone postal_code registered_at)
 
       get customers_path
 
