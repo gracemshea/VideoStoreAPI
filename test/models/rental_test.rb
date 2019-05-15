@@ -50,12 +50,30 @@ describe Rental do
       rental_one.customer.must_equal customers(:one)
     end
 
-    it "must have a Movie" do
+    it "rejects a rental without an customer" do
+      @rental.customer_id = nil
+      @rental.save
+      result = @rental.valid?
+
+      expect(result).must_equal false
+      expect(@rental.errors.messages).must_include :customer_id
+    end
+
+    it "must have a movie" do
       rental_one = rentals(:one)
       rental_one.must_respond_to :movie
       rental_one.movie.must_be_kind_of Movie
       rental_one.movie.title.must_equal "Wild Hearts Can't Be Broken"
       rental_one.movie.must_equal movies(:one)
+    end
+
+    it "rejects a rental without an movie" do
+      @rental.movie_id = nil
+      @rental.save
+      result = @rental.valid?
+
+      expect(result).must_equal false
+      expect(@rental.errors.messages).must_include :movie_id
     end
   end
   describe "custom method " do
@@ -68,5 +86,20 @@ describe Rental do
 
     it "checks that movie is not available when there are none in inventory" do
     end
+  end
+end
+
+describe "availability" do
+  let(:rental_two) {
+    Rental.new(
+      movie_id: movies(:other_test).id,
+      customer_id: customers(:shelley).id,
+      checkout: DateTime.now,
+      due: DateTime.now + 7.days,
+    )
+  }
+  it "won't be valid if movie is unavailable" do
+    rental_two.movie.inventory = 0
+    value(rental_two).wont_be :valid?
   end
 end
