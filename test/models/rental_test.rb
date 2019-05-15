@@ -76,30 +76,25 @@ describe Rental do
       expect(@rental.errors.messages).must_include :movie_id
     end
   end
+
   describe "custom method " do
     it "checks if no movie is available when all are checked out" do
-      #TO DO: HOW TO SET UP A CHECKED OUT MOVIE
+      movie = movies(:oliver)
+      answer = rental.movie_avail?(movie.id)
+
+      expect(answer).must_equal false
     end
 
     it "checks that movie is available when there are more in inventory than are checked out" do
+      movie = movies(:will)
+      answer = rental.movie_avail?(movie.id)
+      expect(answer).must_equal true
     end
 
     it "checks that movie is not available when there are none in inventory" do
+      movie = movies(:harvey)
+      answer = rental.movie_avail?(movie.id)
+      expect(answer).must_equal false
     end
-  end
-end
-
-describe "availability" do
-  let(:rental_two) {
-    Rental.new(
-      movie_id: movies(:other_test).id,
-      customer_id: customers(:shelley).id,
-      checkout: DateTime.now,
-      due: DateTime.now + 7.days,
-    )
-  }
-  it "won't be valid if movie is unavailable" do
-    rental_two.movie.inventory = 0
-    value(rental_two).wont_be :valid?
   end
 end
