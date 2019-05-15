@@ -3,6 +3,12 @@ require "test_helper"
 describe Movie do
   let(:movie) { movies(:wild) }
   describe "validations" do
+    it "is a valid movie" do
+      valid_movie = movie
+
+      expect(movie.valid?).must_equal true
+    end
+
     it "requires a title" do
       movie.title = nil
 
