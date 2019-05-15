@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
              ),
              status: :ok
     else
-      render json: { ok: false, errors: movie.errors.messages },
+      render json: { ok: false, errors: "Movie not found" },
              status: :not_found
     end
   end
