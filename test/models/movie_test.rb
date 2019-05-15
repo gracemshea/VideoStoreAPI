@@ -4,9 +4,8 @@ describe Movie do
   let(:movie) { movies(:wild) }
   describe "validations" do
     it "is a valid movie" do
-      valid_movie = movie
-
-      expect(movie.valid?).must_equal true
+      this_movie = movie.valid?
+      expect(this_movie).must_equal true
     end
 
     it "requires a title" do
@@ -14,7 +13,7 @@ describe Movie do
 
       valid_movie = movie.valid?
 
-      expect(movie.valid?).must_equal false
+      expect(valid_movie).must_equal false
       expect(movie.errors.messages).must_include :title
       expect(movie.errors.messages[:title]).must_equal ["can't be blank"]
     end
@@ -24,7 +23,7 @@ describe Movie do
 
       valid_movie = movie.valid?
 
-      expect(movie.valid?).must_equal false
+      expect(valid_movie).must_equal false
       expect(movie.errors.messages).must_include :overview
       expect(movie.errors.messages[:overview]).must_equal ["can't be blank"]
     end
@@ -34,7 +33,7 @@ describe Movie do
 
       valid_movie = movie.valid?
 
-      expect(movie.valid?).must_equal false
+      expect(valid_movie).must_equal false
       expect(movie.errors.messages).must_include :release_date
       expect(movie.errors.messages[:release_date]).must_equal ["can't be blank"]
     end
@@ -44,7 +43,7 @@ describe Movie do
 
       valid_movie = movie.valid?
 
-      expect(movie.valid?).must_equal false
+      expect(valid_movie).must_equal false
       expect(movie.errors.messages).must_include :inventory
       expect(movie.errors.messages[:inventory]).must_equal ["can't be blank"]
     end

@@ -12,6 +12,7 @@ class Rental < ApplicationRecord
     else
       return false
     end
+  end
 
   private
 
