@@ -63,7 +63,7 @@ describe Movie do
       movie = movies(:will)
       avail_inv = movie.available_inventory
 
-      expect(avail_inv).must_equal 2
+      expect(avail_inv).must_equal 3
     end
 
     it "can calculate available_inventory for movie that has not been rented" do

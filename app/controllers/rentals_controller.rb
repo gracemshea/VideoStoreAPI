@@ -7,6 +7,13 @@ class RentalsController < ApplicationController
 
     if rental.movie_avail?(rental_params[:movie_id])
       if rental.save
+        customer = Customer.find_by(id: rental.customer_id)
+        customer.movies_checked_out_count += 1
+        customer.save
+
+        movie = Movie.find_by(id: rental.movie_id)
+        movie.available_inventory -= 1
+        movie.save
         render json: rental.as_json(except: [:created_at, :updated_at]), status: :ok
       else
         render json: {
@@ -25,6 +32,13 @@ class RentalsController < ApplicationController
     if rental
       rental.status = "available"
       if rental.save
+        customer = Customer.find_by(id: rental.customer_id)
+        customer.movies_checked_out_count -= 1
+        customer.save
+
+        movie = Movie.find_by(id: rental.movie_id)
+        movie.available_inventory += 1
+        movie.save
         render json: rental.as_json(except: [:created_at, :updated_at]), status: :ok
       else
         render json: {
