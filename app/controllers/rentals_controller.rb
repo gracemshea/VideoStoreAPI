@@ -17,13 +17,13 @@ class RentalsController < ApplicationController
         render json: rental.as_json(except: [:created_at, :updated_at]), status: :ok
       else
         render json: {
-          errors: rental.errors.messages,
-        }, status: :bad_request
+                 errors: rental.errors.messages,
+               }, status: :bad_request
       end
     else
       render json: {
-        errors: "Movie not available",
-      }, status: :bad_request
+               errors: "Movie not available",
+             }, status: :bad_request
     end
   end
 
